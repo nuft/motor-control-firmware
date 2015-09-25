@@ -174,6 +174,7 @@ CP   = $(TRGT)objcopy -j startup -j constructors -j destructors -j .text -j .ARM
 AS   = $(TRGT)gcc -x assembler-with-cpp
 AR   = $(TRGT)ar
 OD   = $(TRGT)objdump
+NM   = $(TRGT)nm
 SZ   = $(TRGT)size
 HEX  = $(CP) -O ihex
 BIN  = $(CP) -O binary
@@ -230,8 +231,9 @@ UINCDIR += $(LIBUAVCAN_INC) $(LIBUAVCAN_STM32_INC) ./dsdlc_generated
 #
 # End of user defines
 ##############################################################################
+GLOBAL_SRC_DEP = src/src.mk
 
-RULESPATH = $(CHIBIOS)/os/common/ports/ARMCMx/compilers/GCC
+RULESPATH = .
 include $(RULESPATH)/rules.mk
 -include tools.mk
 
